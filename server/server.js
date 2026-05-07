@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 
 const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
 
 // Load Environment Variables
 dotenv.config();
@@ -15,6 +16,9 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
+app.use("/api/auth", authRoutes);
 
 // Test Route
 app.get("/", (req, res) => {
